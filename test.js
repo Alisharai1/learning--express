@@ -60,9 +60,22 @@ let a = []
  */
 
 
-if(a){
+if (a) {
     console.log("true")
 } else {
     console.log("false");
-    
 }
+
+const h2 = { name: "ajay", age: 23, girl: "alisha", }
+
+h2.name
+h2['name']
+
+const { name, age, girl } = h2
+
+
+const h3 = { role: "SDE2", company: "Cimpress", name: "Alisha" }
+let r1 = "role"
+h3.role
+h3[r1]
+const { role } = h3

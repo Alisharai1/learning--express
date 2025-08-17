@@ -3,13 +3,19 @@ class User {
         this.users = []
     }
     addUser(name, age, role, email) {
-        this.users.push({
+        // read file and get user
+        // update the user array
+        // write to the file again with updated user array
+        const user = {
             name,
             age,
             role,
             id: this.users.length + 1,
             email
-        })
+        }
+        this.users.push(user)
+
+        return user
     }
 
     getUserById(id) {
@@ -23,18 +29,19 @@ class User {
 
         if (user.length) {
             return user[0]
+
         }
         return false
     }
 
     getUserByEmailId(email) {
         const user = this.users.filter
-        ((user) => {
-            if (email === user.email) {
-                return true
-            }
-            return false
-        })
+            ((user) => {
+                if (email === user.email) {
+                    return true
+                }
+                return false
+            })
         return user
     }
 
@@ -52,22 +59,26 @@ class User {
             if (u.id === id) {
                 return user
             }
-
-            return u
+            return u// old user=u
         })
+
+        const updatedUser = this.getUserById(id)
+        return updatedUser
+
     }
 
-    deleteUser(id){
-        const user= this.getUserById(id)
-        if(!user){
+    deleteUser(id) {
+        const user = this.getUserById(id)
+        if (!user) {
             return false
         }
-        this.users=this.users.filter((u)=>{
-            if(id===u.id){
+        this.users = this.users.filter((u) => {
+            if (id === u.id) {
                 return false
             }
             return true
         })
+        return true
     }
 }
 
