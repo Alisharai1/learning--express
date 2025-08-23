@@ -25,3 +25,8 @@ git push
 ```
 git status (return the files which are in stage/changes)
 ```
+
+### To clone a repository
+```
+git clone (Clone URL- from github/gitlab)
+```
