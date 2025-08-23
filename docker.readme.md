@@ -17,5 +17,11 @@ docker rm containerId/containerName
 docker rm -f containerId/containerName-it
 docker rmi -f imageId
 docker run -itd -v localpath:/containerPath imageName 
+docker push command, Docker pushes your image to your configured registry.
 
+docker build -t myfirstapp .
+* Default dockerfile name is Dockerfile
+ docker build -t myfirstapp --file dev.dockerfile .
+ * Custom file name- dev.dockerfile
+ * myFirstapp is my custom application image
 ```
