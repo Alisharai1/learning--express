@@ -21,3 +21,7 @@ git commit -m "commit message"
 ```
 git push
 ```
+### To check the git tracking status
+```
+git status (return the files which are in stage/changes)
+```
