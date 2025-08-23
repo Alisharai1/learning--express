@@ -30,3 +30,7 @@ git status (return the files which are in stage/changes)
 ```
 git clone (Clone URL- from github/gitlab)
 ```
+### To restore changes
+```
+git restore fileName/folderName (for all files/folders- use .)
+```
