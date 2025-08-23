@@ -1,3 +1,4 @@
+const fs= require('fs')
 class User {
     constructor() {
         this.users = []
@@ -17,6 +18,11 @@ class User {
 
         return user
     }
+
+writeUsersInFile(users){
+    fs.writeFile()
+    
+}
 
     getUserById(id) {
         const user = this.users.filter((user) => {
@@ -45,11 +51,30 @@ class User {
         return user
     }
 
+    // diff b/w getUserById and getUserByEmailId-
+
+    /**
+     * getUserById- returns object/false
+     *  getUserByEmailId- returns array/UTF-8 encoding)
+     *  */ 
+
+     /**2. When match found
+      * getUserById- Returns first matching object
+      * getUserByEmailId- returns arrayof matches (could be 1 or many)
+      * 
+      * 3. When match not found
+      * getUserById- returns false
+      * getUserByEmailId- Returns empty array []
+      * 
+      */
+
+
     getAllUser() {
         return this.users
     }
 
-    updateUser(id, user) {
+    updateUser(id, user) {//user-new user
+        //new user is taken as i/p.Benefit- becuase if we want to update all the fields(age,name,email) it can be done in one go
         const existingUser = this.getUserById(id)
         if (!existingUser) {
             return false
@@ -57,7 +82,7 @@ class User {
 
         this.users = this.users.map((u) => {
             if (u.id === id) {
-                return user
+                return user//new user
             }
             return u// old user=u
         })
@@ -85,3 +110,30 @@ class User {
 const user = new User()
 const exportData = { user }
 module.exports = exportData
+
+//  exportData = {
+//   user: user
+// }
+
+
+
+
+
+
+
+
+
+/**
+ * const user= new User()
+ * const exportData={user}...>exporting user object,
+ * module.exports=exportData...>
+ * way to share data b/w fiiles in node js
+ * 
+ * 
+ * const service=require('filename')...>load/import what we exported
+ * const user=service.user...>take outapp.use(express.json()) // to parse request and app is a Express server
+ the user object
+ * 
+ * const{user}=require('filename')..>can be written in single line
+ * 
+ */
