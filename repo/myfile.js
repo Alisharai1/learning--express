@@ -1,26 +1,41 @@
-/**
- * class - myFile
- * const- i/p- filepath
- * add CRUD Method to it
- * 
- */
-const fs = require('fs')
+const fileSystem = require('fs')
 class MyFile {
     constructor(filePath) {
         this.filePath = filePath
 
     }
-
-    createAndWrite(content) {
-        fs.writeFileSync(this.filePath, JSON.stringify(content))
+    create(data) {
+        fileSystem.writeFileSync(this.filePath, JSON.stringify(data))
 
     }
+    read() {
+        const data = fileSystem.readFileSync(this.filePath, { encoding: "utf-8" })
+        const returnOutput = JSON.parse(data)
 
+        return returnOutput
 
+    }
+    update(data) {
+        fileSystem.appendFileSync(this.filePath, JSON.stringify(data))
+    }
 
+    delete() {
+        fileSystem.unlinkSync(this.filePath)
+
+    }
 }
-const f = new MyFile('index1')
-f.createAndWrite({
-    name: "k"
 
-})
+const file = new MyFile("data.json")
+// file.create({ name: "Ajay", age: 28 })
+// let output = file.read()
+// console.log(output);
+// console.log(typeof output, output);
+
+// console.log(typeof returnOutput, returnOutput);
+// returnOutput.name = "Anklu"
+// console.log(returnOutput);
+
+module.exports = { file }
+// I have understood all the above code- Alisha Rai
+
+

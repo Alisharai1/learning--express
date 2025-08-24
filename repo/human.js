@@ -275,19 +275,25 @@ Method makeUpper(str) → returns the string in uppercase.
 class StringHelper {
 
     getLength(str) {
-        for (let char of str) {
-
-        }
+        const chars = str.split("")
+        const output = chars.filter((c) => c !== " ")
+        return output.length
 
     }
 
     makeUpper(str) {
+        return str.toUpperCase()
 
     }
 
 }
 const s = new StringHelper()
-s.getLength("Mathematics and Physics")
+let output = s.getLength("Mathematics and Physics")
+console.log(output);
+let output2 = s.makeUpper("Physics")
+console.log(output2);
+
+
 
 
 
