@@ -30,6 +30,11 @@ docker run imageName(redis)
 ```
 docker run -it imageName:tag
 ```
+* -i = keep STDIN open → you can type commands.
+
+ * -t= allocate a pseudo-terminal (TTY) → makes it look like a normal shell.
+* You are attached to the container → you see its output and can type input.
+
 #### To run a container in detached mode
 ```
 docker run -d imageName:tag
