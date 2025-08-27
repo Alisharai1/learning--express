@@ -8,11 +8,12 @@ docker ps
 ```
 docker ps -a
 ```
+#### To get list of images
 ```
 docker images
 ```
-* Will get list of images downoaded from docker hub(public repo)```
-docker exec -it containerName/containerId executableCommand
+* Will get list of images downoaded from docker hub(public repo)
+
 #### To pull a image from docker hub
 ```
 docker pull imageName:tag
@@ -24,7 +25,7 @@ docker run imageName(redis)
 * Create+start a new container
 * Basicaly does 2 jobs- pulls the image and ccreate a new container
 * When we use this command, docker pull command is not mandate, it will automatically pull the image from docker hub
-* Every time your docker run redis, you get a fresh container.!!!!!!!!
+* Every time your docker run redis, you get a fresh container.
 
 #### To run a container in interactive mode
 ```
