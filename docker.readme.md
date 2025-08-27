@@ -44,7 +44,7 @@ docker run -d imageName:tag
 ```
 docker start containerId
 ```
-#### To....
+#### To stop a container quickly
 ```
 docker kill containerId/containerName
 ```
@@ -52,16 +52,57 @@ docker kill containerId/containerName
 ```
 docker restart containerId/containerName
 ```
-docker exec -it containerName/containerId executableCommand
-docker rm containerId/containerName
-docker rm -f containerId/containerName-it
-docker rmi -f imageId
-docker run -itd -v localpath:/containerPath imageName 
-docker push command, Docker pushes your image to your configured registry.
+#### To run a new command inside an already running container
 
+* "docker exec -it" is like saying “hey container, while you’re already running, let me jump inside and run this command interactively.”
+* (unlike docker run which starts a new container)
+
+```
+docker exec -it containerName/containerId executableCommand(sh)
+```
+#### To remove/delate a container
+* By default we can just remove a stopped container
+* If the container is still running, you’ll get an error.
+```
+docker rm containerId/containerName
+```
+#### To forcefully remove a running container
+```
+docker rm -f containerId/containerName-it
+```
+#### To forcefully remove an image
+* Forceful removal although :-
+* The image is tagged in multiple repositories.
+
+* The image is being used by stopped containers.
+```
+docker rmi -f imageId
+```
+#### To run a container in background with interactive terminal while mounting a local folder into container's file system
+* -v localpath:/containerPath →  whatever files you put in the local path will appear inside the container at container path
+* Why use -v (bind mounts)?→  Share source code between host and container.
+
+```
+docker run -itd -v localpath:/containerPath imageName 
+```
+#### To push
+* Docker pushes your image to your configured registry.(Dockerhub/AWS/private registry)
+```
+docker push  
+```
+
+#### To build a docker image
+```
 docker build -t myfirstapp .
-* Default dockerfile name is Dockerfile
- docker build -t myfirstapp --file dev.dockerfile .
- * Custom file name- dev.dockerfile
+```
+* docker build → Builds a Docker image from a Dockerfile (and context).
+* -t myfirstapp → tags the image (myfirstapp) with it's version.If no version, docker by default takes it's latest version
+* . → current directory
+* Docker sends the files from this directory (and subdirs) to the Docker daemon to build the image.
+
+* Docker expects a Dockerfile inside this directory unless you specify otherwise (-f Dockerfile.dev).
+
+* In short, docker build -t myfirstapp . builds a new Docker image from the Dockerfile in the current directory and tags it as myfirstapp:latest.
+
  * myFirstapp is my custom application image
 ```

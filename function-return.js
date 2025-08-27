@@ -230,82 +230,290 @@ getCompletedTasks() → return array of completed tasks.
 
 
 
-class TaskManager {
-    constructor(tasks) {
-        this.tasks = tasks
+// class TaskManager {
+//     constructor(tasks) {
+//         this.tasks = tasks
 
-    }
-    addTask(title) {
-        const taskObj = {
-            id: (this.tasks.length) + 1,
-            title: title,
-            status: "pending"
-        }
-        this.tasks.push(taskObj)
-        return taskObj
-    }
-    completeTask(id) {
-        //   for(let task of this.tasks){
-        //       if(id===task.id){
-        //           task.status="done"
-        //       return task
-        //       }
+//     }
+//     addTask(title) {
+//         const taskObj = {
+//             id: (this.tasks.length) + 1,
+//             title: title,
+//             status: "pending"
+//         }
+//         this.tasks.push(taskObj)
+//         return taskObj
+//     }
+//     completeTask(id) {
+//         //   for(let task of this.tasks){
+//         //       if(id===task.id){
+//         //           task.status="done"
+//         //       return task
+//         //       }
 
-        //   } 
-        //   throw new Error("no such id found")
+//         //   } 
+//         //   throw new Error("no such id found")
 
-        const task = this.tasks.find((t) => {
-            if (id === t.id) {
-                return true
-            }
-            return false
-        })
-        if (task) {
-            task.status = "done"
-            return task
-        }
-        throw new Error("no such id found")
+//         const task = this.tasks.find((t) => {
+//             if (id === t.id) {
+//                 return true
+//             }
+//             return false
+//         })
+//         if (task) {
+//             task.status = "done"
+//             return task
+//         }
+//         throw new Error("no such id found")
 
-    }
+//     }
 
-    getPendingTasks() {
-        const pendingTask = this.tasks.filter((task) => {
-            if (task.status === "pending") {
-                return true
-            }
-            return false
-        })
-        return pendingTask
-    }
+//     getPendingTasks() {
+//         const pendingTask = this.tasks.filter((task) => {
+//             if (task.status === "pending") {
+//                 return true
+//             }
+//             return false
+//         })
+//         return pendingTask
+//     }
 
-    getCompletedTasks() {
-        const completedTask = this.tasks.filter((task) => {
-            if (task.status === "done") {
-                return true
-            }
-            return false
-        })
-        return completedTask
-    }
+//     getCompletedTasks() {
+//         const completedTask = this.tasks.filter((task) => {
+//             if (task.status === "done") {
+//                 return true
+//             }
+//             return false
+//         })
+//         return completedTask
+//     }
 
-}
+// }
 
-const t = new TaskManager([])
-let output = t.addTask("learning Javascript")
-output = t.addTask("learning Docker")
-output = t.addTask("learning EXpress")
-console.log(t.tasks)
-let output2 = t.completeTask(2)
-console.log(t.tasks)
-let output3 = t.getPendingTasks()
-console.log(output3)
-let output4 = t.getCompletedTasks()
-console.log(output4)
+// const t = new TaskManager([])
+// let output = t.addTask("learning Javascript")
+// output = t.addTask("learning Docker")
+// output = t.addTask("learning EXpress")
+// console.log(t.tasks)
+// let output2 = t.completeTask(2)
+// console.log(t.tasks)
+// let output3 = t.getPendingTasks()
+// console.log(output3)
+// let output4 = t.getCompletedTasks()
+// console.log(output4)
+
+/**
+ * Online Voting System
+Create a VotingSystem class with:
+
+Candidates stored in { name, votes }.
+
+addCandidate(name) → returns updated candidate list.
+
+vote(candidateName) → adds a vote, return updated vote count.
+
+getWinner() → return candidate with max votes.
+
+Movie Ticket Booking
+Create a Cinema class with:
+
+Properties: seats (array of seat numbers).
+
+bookSeat(seatNo) → return "Booked" if free, "Already booked" otherwise.
+
+cancelSeat(seatNo) → free the seat, return status.
+
+getAvailableSeats() → return array of free seats.
+
+E-Wallet System
+Create a Wallet class with:
+
+Properties: balance, transactions (array of {type, amount, date}).
+
+addMoney(amount) → return updated balance.
+
+spendMoney(amount) → return updated balance or "Insufficient funds".
+
+getTransactionHistory() → return array of transactions.
+
+getMonthlySpending(month) → return total spending in that month.
+ */
 
 
 
+// class Bank {
+//     constructor(bankAccounts) {
+//         this.bankAccounts = bankAccounts
+//     }
+//     createAccount(name, initialBalance) {
+//         const account = {
+//             name,
+//             balance: initialBalance,
+//             accountNumber: this.bankAccounts.length + 1
+//         }
+//         this.bankAccounts.push(account)
+//         return account
+//     }
+
+//     findAccount(accountNumber) {
+//         return this.bankAccounts.find((acc) => {
+//             if (accountNumber === acc.accountNumber) {
+//                 return true
+//             }
+//             return false
+
+//         })
+//         //      return detail
+//     }
 
 
+//     transfer(fromAcc, toAcc, amount) {
+//         /**
+//          * find if that account exist or not and then account detail validation
+//          * balnce>amt-fromACC
+//          * balance-update=toacc
+//          * balance+=amount
+//          * balance-=amount
+//          * return success
+//          */
+
+//         const fromAccDetail = this.findAccount(fromAcc)
+//         const toAccDetail = this.findAccount(toAcc)
+
+//         if (!fromAccDetail || !toAccDetail) {
+//             return "account not found"
+//         }
+//         if (fromAccDetail.balance >= amount) {
+//             fromAccDetail.balance -= amount
+//             toAccDetail.balance += amount
+//             return "successful"
+//         }
+//         return "insufficient balance"
+
+//     }
+
+// }
+
+// const bank = new Bank([])
+// let b = bank.createAccount("Alisha", 0)
+// b = bank.createAccount("Ajay", 10000)
+// b = bank.createAccount("kittu", 20000)
+// b = bank.createAccount("Manisha", 40000)
+// console.log(bank.bankAccounts)
+// const b1 = bank.findAccount(3)
+// console.log(b1)
+// const b2 = bank.transfer(4, 1, 300000)
+// console.log(b2)
+// console.log(bank.bankAccounts)
 
 
+/**
+ * line Voting System
+Create a VotingSystem class with:
 
+Candidates stored in { name, votes }.
+
+addCandidate(name) → returns updated candidate list.
+
+vote(candidateName) → adds a vote, return updated vote count.
+
+getWinner() → return candidate with max votes.
+ */
+
+// class VotingSystem {
+//     constructor(candidates) {
+//         this.candidates = candidates
+//     }
+//     addCandidate(name) {
+//         const candidate = {
+//             name,
+//             vote: 0
+
+//         }
+
+//         this.candidates.push(candidate)
+//         return this.candidates
+//     }
+
+//     vote(candidateName) {
+
+//         const candidate = this.candidates.find((c) => {
+//             if (candidateName === c.name) {
+
+//                 return true
+//             }
+//             return false
+
+//         })
+//         if (candidate) {
+//             candidate.vote += 1
+//             return candidate.vote
+//         }
+
+//     }
+
+//     getWinner() {
+//         let output = { name: "", vote: 0 }
+//         for (let element of this.candidates) {
+//             if (element.vote >= output.vote) {
+//                 output = element
+//             }
+//         }
+//         return output
+//     }
+
+// }
+
+// const c = new VotingSystem([])
+// let ans = c.addCandidate("Alisha")
+// ans = c.addCandidate("Ajay")
+// ans = c.addCandidate("KIttu")
+// ans = c.addCandidate("Ram")
+// console.log(c.candidates)
+// let voting = c.vote("Ajay")
+// voting = c.vote("Ajay")
+// voting = c.vote("Ajay")
+// console.log(voting)
+// console.log(c.candidates)
+// const winner = c.getWinner()
+// console.log(winner)
+
+/**
+ * 
+Movie Ticket Booking
+Create a Cinema class with:
+
+Properties: seats (array of seat numbers).
+
+bookSeat(seatNo) → return "Booked" if free, "Already booked" otherwise.
+
+cancelSeat(seatNo) → free the seat, return status.
+
+getAvailableSeats() → return array of free seats.
+
+ */
+
+
+// class Cinema{
+//     constructor(totalSeat){
+//         this.seats=[]
+    
+//         for(let i=0;i<totalSeat;i++){
+//             this.seats.push(0)
+//         }
+//     }
+//     bookSeat(seatNo){
+//       if(this.seats[seatNo-1]===1){
+//           return "already occupied"
+//       }
+//       this.seats[seatNo-1]=1
+//       return "booked"
+//     }
+// }
+// const c= new Cinema(5)
+// console.log(c.seats)
+// const c1= c.bookSeat(3)
+// const c2= c.bookSeat(3)
+
+// console.log(c1)
+// console.log(c.seats)
