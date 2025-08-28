@@ -43,7 +43,7 @@ docker run -d imageName:tag
 
 #### To start an exsisting container
 ```
-docker start containerId
+docker start containerId/containerName
 ```
 #### To stop a container quickly
 ```
@@ -61,7 +61,7 @@ docker restart containerId/containerName
 ```
 docker exec -it containerName/containerId executableCommand(sh)
 ```
-#### To remove/delate a container
+#### To remove/delete a container
 * By default we can just remove a stopped container
 * If the container is still running, you’ll get an error.
 ```
@@ -69,7 +69,7 @@ docker rm containerId/containerName
 ```
 #### To forcefully remove a running container
 ```
-docker rm -f containerId/containerName-it
+docker rm -f containerId/containerName
 ```
 #### To forcefully remove an image
 * Forceful removal although :-
@@ -95,7 +95,10 @@ docker push
 #### To build a docker image
 ```
 docker build -t myfirstapp .
+docker build -t myfirstapp -f dev.dockerfile .
+docker run -itd -v ./:/app -p 3000:4000 myfirstapp
 ```
+
 * docker build → Builds a Docker image from a Dockerfile (and context).
 * -t myfirstapp → tags the image (myfirstapp) with it's version.If no version, docker by default takes it's latest version
 * . → current directory
